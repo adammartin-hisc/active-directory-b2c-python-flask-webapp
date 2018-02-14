@@ -27,6 +27,9 @@ keys = keys(config)
 # and don't check it into github!!
 microsoft = microsoft_client(config, app)
 
+def _authenticate(session, microsoft_client):
+    session['state'] = uuid.uuid4()
+    return microsoft_client.authorize(callback=url_for('authorized', _external=True), state=session['state'])
 
 @app.route('/')
 def index():
@@ -34,15 +37,10 @@ def index():
 
 @app.route('/login', methods = ['POST', 'GET'])
 def login():
-
 	if 'microsoft_token' in session:
 		return redirect(url_for('me'))
 
-	# Generate the guid to only accept initiated logins
-	guid = uuid.uuid4()
-	session['state'] = guid
-
-	return microsoft.authorize(callback=url_for('authorized', _external=True), state=guid)
+	return _authenticate(session, microsoft)
 
 @app.route('/logout', methods = ['POST', 'GET'])
 def logout():
