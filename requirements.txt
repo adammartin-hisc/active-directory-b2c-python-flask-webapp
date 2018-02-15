@@ -1,3 +1,4 @@
+azure-graphrbac
 Flask
 oauthlib
 python-jose

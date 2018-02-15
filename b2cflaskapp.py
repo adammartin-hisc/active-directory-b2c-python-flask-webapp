@@ -2,6 +2,7 @@ from flask import Flask, redirect, url_for, session, request, render_template
 from jose import jws
 import json, requests, uuid, yaml
 from microsoft_client import microsoft_client, keys
+from security.user_operations import get_user
 
 with open("config/config.yml", 'r') as ymlfile:
     config = yaml.load(ymlfile)
@@ -49,7 +50,9 @@ def authorized():
 def me():
     token = session['microsoft_token'][0]
     claims = session['claims']
-    return render_template('me.html', me=str(claims))
+    email = claims['emails'][0]
+
+    return render_template('me.html', me=str(claims), user_identity=get_user(email, config))
 
 # If library is having trouble with refresh, uncomment below and implement refresh handler
 # see https://github.com/lepture/flask-oauthlib/issues/160 for instructions on how to do this
