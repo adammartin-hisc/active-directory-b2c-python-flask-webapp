@@ -37,12 +37,12 @@ def logout():
 @app.route('/login/authorized')
 def authorized():
     _verify_state(session, request)
-
     response = microsoft.authorized_response()
+
     if response is None:
         return _access_denied_message(response)
-    _store_results(session, response)
 
+    _store_results(session, response)
     return redirect(url_for('me'))
 
 @app.route('/me')
