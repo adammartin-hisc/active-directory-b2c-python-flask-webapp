@@ -8,10 +8,10 @@ author: navyasric
 
 > [!NOTE]
 > This sample is using a 3rd party library that has been tested for compatibility in basic scenarios with the Azure AD B2C.  Microsoft does not provide fixes for these libraries and has not done a review of these libraries.  Issues and feature requests should be directed to the library's open-source project.  Please see this [document](https://docs.microsoft.com/en-us/azure/active-directory/develop/active-directory-v2-libraries) for more information.   
-> 
+>
 >
 
-This sample demonstrates how to use a 3rd party Python-Flask library ([flask-oauthlib](https://github.com/lepture/flask-oauthlib)) to do oAuth 2.0 against Azure AD B2C.  It then validates the access token using another 3rd party library ([python-jose](https://github.com/mpdavis/python-jose)). 
+This sample demonstrates how to use a 3rd party Python-Flask library ([flask-oauthlib](https://github.com/lepture/flask-oauthlib)) to do oAuth 2.0 against Azure AD B2C.  It then validates the access token using another 3rd party library ([python-jose](https://github.com/mpdavis/python-jose)).
 
 
 ## How To Run This Sample
@@ -34,7 +34,7 @@ From your shell or command line:
 
 If you'd like to see the sample working immediately, you can simply run the app as-is without any code changes. The default configuration for this application performs sign-in & sign-up using our sample B2C tenant, `fabrikamb2c.onmicrosoft.com`.  It uses a [policy](https://azure.microsoft.com/documentation/articles/active-directory-b2c-reference-policies) named `b2c_1_susi`. Sign up for the app using any of the available account types, and try signing in again with the same account.
 
-Run this sample with the following by setting your flask environment variable and running the sample in the terminal. 
+Run this sample with the following by setting your flask environment variable and running the sample in the terminal.
 
 ```
 $ export FLASK_APP=b2cflaskapp.py && flask run
@@ -57,7 +57,7 @@ If you already have existing policies in your B2C tenant, feel free to re-use th
 Now you need to create your own appliation in your B2C tenant, so that your app has its own client ID.  You can do so following [the generic instructions here](https://azure.microsoft.com/documentation/articles/active-directory-b2c-app-registration).  Be sure to include the following information in your app registration:
 
 - Enable the **Web App/Web API** setting for your application.
-- Add a redirect_uri for your app. For this sample, it should be in the form of: `https://yourwebsite/login/authorized`. The OAuth library 
+- Add a redirect_uri for your app. For this sample, it should be in the form of: `https://yourwebsite/login/authorized`. The OAuth library
 - Copy the client ID generated for your application, so you can use it in the next step.
 - Generate a client secret for your application.
 
@@ -73,7 +73,7 @@ policy_name = 'b2c_1_susi'
 ```
 ## Questions and Issues
 
-Please file any questions or problems with the sample as a github issue.  You can also post on StackOverflow with the tag ```azure-ad-b2c```.  For oAuth2.0 library issues, please see note above. 
+Please file any questions or problems with the sample as a github issue.  You can also post on StackOverflow with the tag ```azure-ad-b2c```.  For oAuth2.0 library issues, please see note above.
 
 This sample was tested with Python 2.7.10, Flask 0.11.1, Flask-OAuthlib 0.9.3 and python-jose 1.3.2
 
