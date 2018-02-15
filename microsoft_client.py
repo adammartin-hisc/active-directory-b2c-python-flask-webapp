@@ -7,7 +7,7 @@ def microsoft_client(config, app):
         consumer_key=config['client_id'],
         consumer_secret=config['client_secret'],
         request_token_params={'scope': _scopes(config) },
-        base_url='http://ignore',  # We won't need this
+        base_url='http://microsoft_ignores_this_value',  # We won't need this
         request_token_url=None,
         access_token_method='POST',
         access_token_url=_token_url(config),
